@@ -1,16 +1,15 @@
 #ifndef MYVIEW_H
 #define MYVIEW_H
 
-#include <QObject>
 #include <QGraphicsView>
+#include <QObject>
 #include <QPoint>
 #include <opencv2/core.hpp>
 
 using namespace cv;
 
-class MyView : public QGraphicsView
-{
-public:
+class MyView : public QGraphicsView {
+   public:
     MyView(QWidget *parent = nullptr);
     void wheelEvent(QWheelEvent *event);
     void mousePressEvent(QMouseEvent *event);
@@ -23,15 +22,13 @@ public:
     Mat srcImg;
     Mat grayImg;
     Mat tmpImg;
-    bool isDraw=false;
+    bool isDraw = false;
     std::vector<Point> contour;
 
-
-private:
-    bool isHold=false;
+   private:
+    bool isHold = false;
     QPoint lastMousePos;
-    QGraphicsPixmapItem* imgItem;
-
+    QGraphicsPixmapItem *imgItem;
 };
 
-#endif // MYVIEW_H
+#endif  // MYVIEW_H
