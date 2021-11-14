@@ -16,18 +16,13 @@ class MyView2 : public QGraphicsView {
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
     void showImg(cv::Mat img);
-    void func();
-    void paintEvent(QPaintEvent *event);
-
-    Mat srcImg;
-    Mat tmpImg;
+    cv::Rect cutCenter();
 
    private:
     bool isHold = false;
     QPoint lastMousePos;
     QGraphicsPixmapItem *imgItem;
-    QGraphicsPixmapItem *imgItem2;
-
+    QGraphicsSimpleTextItem *textItem;
 };
 
 #endif  // MYVIEW2_H

@@ -781,10 +781,10 @@
           </brush>
          </property>
          <property name="transformationAnchor">
-          <enum>QGraphicsView::AnchorUnderMouse</enum>
+          <enum>QGraphicsView::AnchorViewCenter</enum>
          </property>
          <property name="resizeAnchor">
-          <enum>QGraphicsView::AnchorUnderMouse</enum>
+          <enum>QGraphicsView::AnchorViewCenter</enum>
          </property>
         </widget>
        </widget>
@@ -839,7 +839,65 @@
           </rect>
          </property>
          <property name="text">
-          <string>PushButton</string>
+          <string>裁切图片</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_14">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>100</y>
+           <width>71</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="readOnly">
+          <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_14">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>100</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>内框边长</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_15">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>100</y>
+           <width>31</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>微米</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </widget>

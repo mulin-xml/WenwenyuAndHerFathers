@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 
+#include <QDebug>
 #include <QFileDialog>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
@@ -169,19 +170,20 @@ void MainWindow::on_pushButton_8_clicked() {
     //    cv::imshow("grayImg",ui->graphicsView->grayImg);
 }
 
-namespace YGT {}
+namespace YGT {
+Mat grayImg;
+}
 
 void MainWindow::on_pushButton_13_clicked() {
-    auto path = QFileDialog::getOpenFileName(nullptr, "打开图片", ".", "Image file(*.png *.jpg *.bmp *.tif)");
-    auto& srcImg = ui->graphicsView_2->srcImg;
-    srcImg = imread(QTextCodec::codecForName("GB2312")->fromUnicode(path).data(), IMREAD_UNCHANGED);
+    auto path = QFileDialog::getOpenFileName(nullptr, "打开图片", ".", "Image file(*.tif)");
+    auto srcImg = imread(QTextCodec::codecForName("GB2312")->fromUnicode(path).data(), IMREAD_UNCHANGED);
     if (srcImg.empty()) {
         return;
     }
 
     ui->lineEdit_13->setText(path);
 
-    Mat dst = Mat::zeros(srcImg.rows, srcImg.cols, CV_8UC1);  //先生成空的目标图片
+    YGT::grayImg = Mat::zeros(srcImg.rows, srcImg.cols, CV_8UC1);  //先生成空的目标图片
     double minv = 0.0, maxv = 0.0;
     double* minp = &minv;
     double* maxp = &maxv;
@@ -192,15 +194,17 @@ void MainWindow::on_pushButton_13_clicked() {
     uchar* p_dst;
     for (int i = 0; i < srcImg.rows; i++) {
         p_img = srcImg.ptr<ushort>(i);  //获取每行首地址
-        p_dst = dst.ptr<uchar>(i);
+        p_dst = YGT::grayImg.ptr<uchar>(i);
         for (int j = 0; j < srcImg.cols; ++j) {
             p_dst[j] = (p_img[j] - minv) / (maxv - minv) * 255;
         }
     }
-    ui->graphicsView_2->showImg(dst);
+    ui->graphicsView_2->showImg(YGT::grayImg);
 }
 
-void MainWindow::on_pushButton_9_clicked()
-{
-    ui->graphicsView_2->func();
+void MainWindow::on_pushButton_9_clicked() {
+    auto path = QFileDialog::getSaveFileName(this, "保存图片", ".", "Image file(*.png)");
+    auto rect = ui->graphicsView_2->cutCenter();
+    ui->lineEdit_14->setText(QString::number(rect.width * 0.09766));
+    cv::imwrite(QTextCodec::codecForName("GB2312")->fromUnicode(path).data(), YGT::grayImg(rect));
 }
