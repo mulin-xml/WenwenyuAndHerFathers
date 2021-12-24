@@ -16,15 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    jshd.cpp \
     main.cpp \
     mainwindow.cpp \
     myview.cpp \
-    myview2.cpp
+    view_ygt.cpp \
+    ygt_multi.cpp \
+    ygt_single.cpp
 
 HEADERS += \
     mainwindow.h \
     myview.h \
-    myview2.h
+    view_ygt.h
 
 FORMS += \
     mainwindow.ui

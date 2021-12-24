@@ -41,8 +41,24 @@ class MainWindow : public QMainWindow {
 
     void on_pushButton_9_clicked();
 
+    void on_radioButton_3_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_radioButton_clicked();
+
+    void on_radioButton_4_clicked();
+
+    void on_horizontalSlider_valueChanged(int value);
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_10_clicked();
+
 private:
     Ui::MainWindow *ui;
+    void ShowSelectedImg();
+    void ChannelInit();
 };
 
 #endif  // MAINWINDOW_H

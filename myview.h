@@ -17,8 +17,6 @@ class MyView : public QGraphicsView {
     void mouseReleaseEvent(QMouseEvent *event);
     void showImg(cv::Mat img);
 
-    void initImgInfo();
-
     Mat srcImg;
     Mat grayImg;
     Mat tmpImg;

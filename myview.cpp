@@ -65,4 +65,3 @@ void MyView::mouseReleaseEvent(QMouseEvent *event) {
 
 void MyView::showImg(cv::Mat img) { imgItem->setPixmap(QPixmap::fromImage(QImage(img.data, img.cols, img.rows, img.step, QImage::Format_BGR888))); }
 
-void MyView::initImgInfo() {}

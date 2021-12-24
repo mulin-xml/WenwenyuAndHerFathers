@@ -15,14 +15,14 @@ class MyView2 : public QGraphicsView {
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
-    void showImg(cv::Mat img);
+    void showImg(cv::Mat img, QImage::Format format = QImage::Format_BGR888);
     cv::Rect cutCenter();
+    QGraphicsPixmapItem *imgItem;
+    QGraphicsSimpleTextItem *textItem;
 
    private:
     bool isHold = false;
     QPoint lastMousePos;
-    QGraphicsPixmapItem *imgItem;
-    QGraphicsSimpleTextItem *textItem;
 };
 
 #endif  // MYVIEW2_H

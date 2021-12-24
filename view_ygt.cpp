@@ -1,4 +1,4 @@
-#include "myview2.h"
+#include <view_ygt.h>
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsScene>
@@ -39,9 +39,9 @@ void MyView2::wheelEvent(QWheelEvent *event) {
     auto wheelDeltaValue = event->delta();
 
     if (wheelDeltaValue > 0) {
-        imgItem->setScale(imgItem->scale() * 1.1);
+        imgItem->setScale(imgItem->scale() * 1.05);
     } else {
-        imgItem->setScale(imgItem->scale() / 1.1);
+        imgItem->setScale(imgItem->scale() / 1.05);
     }
     textItem->setText(QString::number(cutCenter().width * 0.09766) + "um");
     QGraphicsView::wheelEvent(event);
@@ -71,9 +71,8 @@ void MyView2::mouseReleaseEvent(QMouseEvent *event) {
     QGraphicsView::mouseReleaseEvent(event);
 }
 
-void MyView2::showImg(cv::Mat img) {
-    imgItem->setPixmap(QPixmap::fromImage(QImage(img.data, img.cols, img.rows, img.step, QImage::Format_Grayscale8)));
-    imgItem->setPos(-img.cols / 2, -img.rows / 2);
+void MyView2::showImg(cv::Mat img,QImage::Format format) {
+    imgItem->setPixmap(QPixmap::fromImage(QImage(img.data, img.cols, img.rows, img.step, format)));
     textItem->setText(QString::number(cutCenter().width * 0.09766) + "um");
 }
 
